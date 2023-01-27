@@ -17,6 +17,8 @@ package com.alibaba.csp.sentinel.dashboard.rule.apollo;
 
 import java.util.List;
 
+import com.alibaba.csp.sentinel.dashboard.datasource.entity.rule.AuthorityRuleEntity;
+import com.alibaba.csp.sentinel.dashboard.datasource.entity.rule.DegradeRuleEntity;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -42,6 +44,16 @@ public class ApolloConfig {
     public Converter<String, List<FlowRuleEntity>> flowRuleEntityDecoder() {
         return s -> JSON.parseArray(s, FlowRuleEntity.class);
     }
+
+    @Bean
+    public Converter<List<DegradeRuleEntity>, String> degradeRuleEntityEncoder(){
+        return JSON::toJSONString;
+    }
+
+    @Bean Converter<String, List<DegradeRuleEntity>> degradeRuleEntityDecoder(){
+        return s -> JSON.parseArray(s,DegradeRuleEntity.class);
+    }
+
 
     @Bean
     public ApolloOpenApiClient apolloOpenApiClient() {
