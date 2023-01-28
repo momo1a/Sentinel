@@ -95,11 +95,11 @@ public class FlowControllerV1 {
         }
         try {
 //            List<FlowRuleEntity> rules = sentinelApiClient.fetchFlowRuleOfMachine(app, ip, port);
-//            rules = repository.saveAll(rules);
-//            return Result.ofSuccess(rules);
-            //使用apollo持久化
+            // 从Apollo 配置中心获取
+            List<FlowRuleEntity> rules = flowRuleApolloProvider.getRules(app);
 
-            return null;
+            rules = repository.saveAll(rules);
+            return Result.ofSuccess(rules);
         } catch (Throwable throwable) {
             logger.error("Error when querying flow rules", throwable);
             return Result.ofThrowable(-1, throwable);

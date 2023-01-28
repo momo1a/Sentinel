@@ -2,7 +2,6 @@ package com.example.apollotest.config;
 
 
 import com.alibaba.csp.sentinel.annotation.aspectj.SentinelResourceAspect;
-import com.alibaba.csp.sentinel.datasource.apollo.ApolloDataSource;
 import com.example.apollotest.listener.ApolloDataSourceListener;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;

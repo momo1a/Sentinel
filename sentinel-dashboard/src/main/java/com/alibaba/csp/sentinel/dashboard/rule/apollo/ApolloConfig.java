@@ -29,7 +29,15 @@ public class ApolloConfig implements InitializingBean {
 
     private String url;
 
-    private List<String> appNameSpaceConfigList = new ArrayList<String>();
+    private List<String> appNameConfigList = new ArrayList<String>();
+
+    public List<String> getAppNameConfigList() {
+        return appNameConfigList;
+    }
+
+    public void setAppNameConfigList(List<String> appNameConfigList) {
+        this.appNameConfigList = appNameConfigList;
+    }
 
     public String getUrl() {
         return url;
@@ -102,7 +110,8 @@ public class ApolloConfig implements InitializingBean {
         ApolloConfig.CLUSTERNAME = clusterName;
         ApolloConfig.NAMESPACE = nameSpace;
         ApolloConfig.URL = url;
-        this.appNameSpaceConfigList.forEach(item -> {
+        //System.err.println(appNameConfigList);
+        appNameConfigList.forEach(item -> {
             String[] items = item.split(":");
             if (items.length == 4) {
                 String applicationName = items[0];
